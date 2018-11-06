@@ -1,7 +1,91 @@
-.App {
+body{
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  background-color: #232323;
+}
+.main-title{
+  color: white;
+  text-align: center
+}
+.display-instructions{
+  width: 50%;
+  padding: 20px;
+  margin-left: 25%;
+  /* position: absolute;
+  top: 45%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%) */
+}
+.img-with-instructions{
+  display: inline-block
+}
+.header-img{
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+}
+.submit{
+  height: 31px;
+  border: none;
+  display: inline-block;
+  color: white;
+  background-color: #4c4c4b;
+}
+.input{
+  display: inline-block;
+  width: 50%;
+  height: 25px;
+}
+/* .submit {
+    display: inline-block;
+
+    border-radius: 0;
+    -webkit-appearance: none;
+} */
+.img-instructions{
+  color: #656565;
+  width: 250px;
+  padding: 20px;
+  font-size: 10px;
   text-align: center;
 }
-
+.second-container{
+  width: 100%;
+  position: absolute;
+}
+.ride-description{
+  color: white;
+}
+.search-form{
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+}
+.main-ride-container{
+  margin-left: 0%;
+  display: inline-block;
+  padding-top: 20px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.ride-description{
+  width: 21%;
+  height: 100px;
+  margin-left: 22px;
+  margin-bottom: 20px;
+  padding: 20px;
+  display: inline-block;
+  padding: 0px;
+  background-color: #373737;
+}
+.ride-zone{
+  color: #656565;
+}
+.ride-name{
+  padding: 20px;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
