@@ -1,17 +1,29 @@
 import React from 'react';
 import axios from 'axios';
+import RideBox from './RideBox';
 
 class SubmitPin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     pin: '',
-     ride_id: 0,
-     token: 'aee10c099086987f0588b0b977337aa3df0804edaa'
+     PIN: '',
+     rideId: 0,
+     token: 'aee10c099086987f0588b0b977337aa3df0804edaa',
+     rideSelected: false
 
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.getRideId = this.getRideId.bind(this)
+  }
+  displayRides(){
+    return this.props.rides.map((params, index)=><RideBox key={index} {...params} rideId={this.state.rideId} getRideId={this.getRideId}/>)
+  }
+  changeColor(){
+    let rideSelected = this.state.rideSelected
+    this.setState({
+      rideSelected: true
+    })
   }
   handleChange(e) {
     this.setState({
@@ -22,27 +34,36 @@ class SubmitPin extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     axios.post("http://fast-rider.herokuapp.com/api/v1/tickets", {
-      pin: this.state.pin,
-      ride_id: this.state.ride_id,
+      pin: this.state.PIN,
+      ride_id: this.state.rideId,
       token: this.state.token
     })
       .then(response => {
         console.log(response.data)
-        // this.setState({
-        //   pin: response.data
-        // })
-        // return pin;
       }).catch(error => {
         console.log('Error fetching and parsing data', error.response);
       });
   }
+  getRideId(e){
+    this.changeColor()
+    console.log(e.currentTarget.value)
+    this.setState({
+      rideId: e.currentTarget.value
+    })
+  }
   render(){
+    console.log(this.state)
     return(
+      <div>
       <div className="search-form">
         <form onSubmit={this.handleSubmit}>
-          <input className="input" type="text" placeholder="PIN #" id="PIN" value={this.state.PIN} onBlur={this.handleChange}/>
+          <input className="input" type="text" placeholder="PIN#" id="PIN" value={this.state.PIN} onChange={this.handleChange}/>
           <button className="submit" type="submit" onClick={this.handleSubmit}>Submit</button>
         </form>
+      </div>
+      <div className="main-ride-container">
+        {this.displayRides()}
+      </div>
       </div>
     )
   }

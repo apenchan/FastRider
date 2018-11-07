@@ -28,11 +28,12 @@ class HomePage extends React.Component {
         });
     }
   render() {
+    console.log(this.state.rideId)
     return (
       <div className="main-container">
-        <h1 className="main-title">The Jungle Fast Rider</h1>
+        <h1 className="main-title">The Jungle FastRider</h1>
         <table className="display-instructions">
-        <tbody>
+          <thead>
           <tr>
             <th>
               <img src={IconOne} className="header-img" />
@@ -43,7 +44,9 @@ class HomePage extends React.Component {
             <th>
               <img src={IconThree} className="header-img" />
             </th>
-          </tr>
+            </tr>
+          </thead>
+          <tbody>
           <tr>
             <td className="img-instructions">Enter your park ticket #PIN number, then select the desired ride while notin the stated return time</td>
             <td className="img-instructions">Press 'submit' to conform and retrieve your access code</td>
@@ -52,8 +55,8 @@ class HomePage extends React.Component {
           </tbody>
         </table>
         <div className="second-container">
-        <SubmitPin />
-        <RidesList rides={this.state.rides} />
+        <SubmitPin rides={this.state.rides}/>
+        {/* <RidesList rides={this.state.rides} /> */}
         </div>
       </div>
     )
