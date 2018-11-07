@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import RideBox from './RideBox';
+import RideInfo from './RideInfo'; 
 
 class SubmitPin extends React.Component {
   constructor(props) {
@@ -9,8 +10,9 @@ class SubmitPin extends React.Component {
      PIN: '',
      rideId: 0,
      token: 'aee10c099086987f0588b0b977337aa3df0804edaa',
-     rideSelected: false
-
+     color: '',
+     success: false,
+     rideInfo: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -18,13 +20,7 @@ class SubmitPin extends React.Component {
     this.getDate = this.getDate.bind(this)
   }
   displayRides(){
-    return this.props.rides.map((params, index)=><RideBox key={index} {...params} rideId={this.state.rideId} getDate={this.getDate} getRideId={this.getRideId}/>)
-  }
-  changeColor(){
-    let rideSelected = this.state.rideSelected
-    this.setState({
-      rideSelected: true
-    })
+    return this.props.rides.map((params, index)=><RideBox key={index} {...params} rideId={this.state.rideId} getDate={this.getDate} highlightRide={this.state.hightlightRide} getRideId={this.getRideId}/>)
   }
   handleChange(e) {
     this.setState({
@@ -41,30 +37,34 @@ class SubmitPin extends React.Component {
     })
       .then(response => {
         console.log(response.data)
+        this.setState({
+          success: true,
+          rideInfo: response.data
+        })
       }).catch(error => {
         console.log('Error fetching and parsing data', error.response);
       });
   }
-  getRideId(e){
-    this.changeColor()
+  getRideId(e, color){
+    // console.log(e.currentTarget)
+    // console.log(e.currentTarget.style)
     console.log(e.currentTarget.value)
     this.setState({
-      rideId: e.currentTarget.value
+      color: e.target.value,
+      rideId: e.currentTarget.id
     })
   }
   getDate(date){
     console.log("I am the date given", date)
     var d = new Date(date);
-    let convertedTime = ((d.getUTCHours()) +( d.getUTCMinutes()) + (d.getUTCSeconds()))
-    console.log(d.getUTCHours()); // Hours
-    console.log(d.getUTCMinutes());
-    console.log(d.getUTCSeconds());
-    console.log("I am concerted Time!", convertedTime)
-    // let date = d;
-    return d.getUTCHours() + d.getUTCMinutes() + d.getUTCSeconds()
+    return (d.getUTCHours())+ d.getUTCMinutes()
   }
   render(){
     console.log(this.state)
+    console.log(this.props.rides)
+    if(this.state.success == true){
+     return <RideInfo rideInfo={this.state.rideInfo}/>
+    } else {
     return(
       <div>
       <div className="search-form">
@@ -78,6 +78,7 @@ class SubmitPin extends React.Component {
       </div>
       </div>
     )
+  }
   }
 }
 
