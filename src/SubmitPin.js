@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import RideBox from './RideBox';
 import RideInfo from './RideInfo'; 
+import DisplayInstructions from './DisplayInstructions';
 
 class SubmitPin extends React.Component {
   constructor(props) {
@@ -69,6 +70,7 @@ class SubmitPin extends React.Component {
     } else {
     return(
       <div>
+      <div><DisplayInstructions/></div>
       <div className="search-form">
         <form onSubmit={this.handleSubmit}>
           <input className="input" type="text" placeholder="PIN#" id="PIN" value={this.state.PIN} onChange={this.handleChange}/>

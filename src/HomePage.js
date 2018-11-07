@@ -1,5 +1,5 @@
 import React from 'react';
-import DisplayInstructions from './DisplayInstructions';
+// import DisplayInstructions from './DisplayInstructions';
 import SubmitPin from './SubmitPin';
 import RidesList from './RidesList';
 import axios from 'axios';
@@ -29,7 +29,7 @@ class HomePage extends React.Component {
 		return (
 			<div className="main-container">
 				<h1 className="main-title">The Jungle FastRider</h1>
-				<div><DisplayInstructions/></div>
+				{/* <div><DisplayInstructions/></div> */}
 				<div className="second-container">
 					<SubmitPin rides={this.state.rides} />
 				</div>

@@ -115,10 +115,10 @@ body{
   position: absolute;
 } */
 .info-container{
-  height: 150px;
-  width: 30%;
   margin-left: 30%;
   color: white;
+  height: 170px;
+  width: 40%;
 }
 .top-left{
   font-family: 'Open Sans', sans-serif;
@@ -149,6 +149,21 @@ body{
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   padding: 15px;
+}
+.thank-message{
+  padding-bottom: 37px;
+  display: block;
+}
+.thank-you{
+  font-family: 'Open Sans', sans-serif;
+  color: #656565;
+  text-align: center;
+  padding-left: 25%;
+  padding-right: 25%;
+  font-size: 15px;
+}
+.image-four{
+  margin-left: 45%;
 }
 @media only screen 
 and (min-width: 300px) 
@@ -199,9 +214,13 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
   .return-info{
     font-size: 15px;
+    padding:12px;
   }
   .access-info{
     padding: 10px;
+  }
+  .thank-you{
+    font-size: 10px;
   }
   /* table th, table td { margin: 0; padding-left: 25px;  }
   table td  { margin-left: 40px;list-style: square; padding-left: 0; } */
