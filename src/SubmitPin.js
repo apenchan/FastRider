@@ -60,7 +60,7 @@ class SubmitPin extends React.Component {
   getDate(date){
     console.log("I am the date given", date)
     var d = new Date(date);
-    return (d.getUTCHours())+ d.getUTCMinutes()
+    return (d.getUTCHours())
   }
   render(){
     console.log(this.state)

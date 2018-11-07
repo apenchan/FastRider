@@ -5,7 +5,6 @@ import IconFour from './images/ico-g-04.svg';
 
 class RideInfo extends React.Component {
   render() {
-    console.log(this.state)
     const dateToFormat = this.props.rideInfo.return_time
     return (
       <div>
