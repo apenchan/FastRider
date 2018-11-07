@@ -7,24 +7,30 @@ body{
 .main-title{
   font-family: 'Open Sans', sans-serif;
   color: white;
-  text-align: center
+  text-align: center;
+  padding: 15px;
 }
 .display-instructions{
   font-family: 'Open Sans', sans-serif;
-  width: 50%;
+  /* width: 50%; */
   padding: 20px;
-  margin-left: 25%;
+  margin-left: 15%;
+}
+.row{
+  padding: 5px;
+  display: inline-block;
 }
 .img-with-instructions{
   display: inline-block
 }
 .header-img{
   display: inline-block;
-  height: 20px;
+  height: 25px;
   width: 30px;
+  margin-left: 40%;
 }
 .submit{
-  height: 31px;
+  height: 25px;
   font-family: 'Open Sans', sans-serif;
   border: none;
   display: inline-block;
@@ -45,7 +51,7 @@ body{
 .img-instructions{
   color: #656565;
   width: 250px;
-  padding: 20px;
+  padding: 30px;
   font-size: 10px;
   text-align: center;
 }
@@ -79,15 +85,17 @@ body{
   background-color: #373737;
 }
 .ride-zone{
+  font-size: 12px;
   color: #656565;
 }
 .ride-name{
   font-family: 'Open Sans', sans-serif;
-  padding: 20px;
+  padding: 10px;
 }
 .remaining-tickets{
   color: #656565;
   float: right;
+  font-size: 12px;
 }
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -113,9 +121,42 @@ body{
 and (min-width: 300px) 
 and (max-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2) {
-  table, table td, table tr, table th {
-     display: block; text-align: left; 
-    } 
+
+  thead th {
+    /* display: block; */
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  td, th {
+    display: block;
+    clear: both;
+  }
+  td[data-th]:before {
+    content: attr(data-th);
+    float: left;
+  }
+  .main-ride-container {
+    padding-left: 15%;
+  }
+  .ride-zone{
+    font-size: 10px;
+  }
+  .ride-name{
+    padding: 8px;
+    font-size: 15px;
+  }
+  .remaining-tickets{
+    font-size: 12px;
+  }
+  .ride-description{
+    width: 100px;
+    /* padding: 0; */ 
+  }
   /* table th, table td { margin: 0; padding-left: 25px;  }
   table td  { margin-left: 40px;list-style: square; padding-left: 0; } */
   /* table thead { display: block; } */

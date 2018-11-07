@@ -15,9 +15,10 @@ class SubmitPin extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.getRideId = this.getRideId.bind(this)
+    this.getDate = this.getDate.bind(this)
   }
   displayRides(){
-    return this.props.rides.map((params, index)=><RideBox key={index} {...params} rideId={this.state.rideId} getRideId={this.getRideId}/>)
+    return this.props.rides.map((params, index)=><RideBox key={index} {...params} rideId={this.state.rideId} getDate={this.getDate} getRideId={this.getRideId}/>)
   }
   changeColor(){
     let rideSelected = this.state.rideSelected
@@ -50,6 +51,17 @@ class SubmitPin extends React.Component {
     this.setState({
       rideId: e.currentTarget.value
     })
+  }
+  getDate(date){
+    console.log("I am the date given", date)
+    var d = new Date(date);
+    let convertedTime = ((d.getUTCHours()) +( d.getUTCMinutes()) + (d.getUTCSeconds()))
+    console.log(d.getUTCHours()); // Hours
+    console.log(d.getUTCMinutes());
+    console.log(d.getUTCSeconds());
+    console.log("I am concerted Time!", convertedTime)
+    // let date = d;
+    return d.getUTCHours() + d.getUTCMinutes() + d.getUTCSeconds()
   }
   render(){
     console.log(this.state)
