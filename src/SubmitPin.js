@@ -7,7 +7,7 @@ class SubmitPin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     PIN: '',
+     PIN: JSON.parse(localStorage.getItem('PIN'))||'',
      rideId: 0,
      token: 'aee10c099086987f0588b0b977337aa3df0804edaa',
      color: '',
@@ -23,6 +23,8 @@ class SubmitPin extends React.Component {
     return this.props.rides.map((params, index)=><RideBox key={index} {...params} rideId={this.state.rideId} getDate={this.getDate} highlightRide={this.state.hightlightRide} getRideId={this.getRideId}/>)
   }
   handleChange(e) {
+    localStorage.setItem("PIN", JSON.stringify(e.target.value));
+    localStorage.getItem('PIN');
     this.setState({
       [e.target.id]: e.target.value
     })
@@ -36,6 +38,8 @@ class SubmitPin extends React.Component {
       token: this.state.token
     })
       .then(response => {
+        localStorage.setItem("PIN", JSON.stringify(this.state.PIN));
+        localStorage.getItem('PIN');
         console.log(response.data)
         this.setState({
           success: true,
@@ -46,8 +50,6 @@ class SubmitPin extends React.Component {
       });
   }
   getRideId(e, color){
-    // console.log(e.currentTarget)
-    // console.log(e.currentTarget.style)
     console.log(e.currentTarget.value)
     this.setState({
       color: e.target.value,

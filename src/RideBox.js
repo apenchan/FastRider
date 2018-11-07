@@ -5,12 +5,6 @@ import IconTwo from './images/ico-02.svg';
 import IconThree from './images/ico-03.svg';
 
 class RideBox extends React.Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state={
-  //     bgColor: '#373737'
-  //   }
-  // }
   render() {
     console.log(this.props)
     const dateToFormat = this.props.return_time;
